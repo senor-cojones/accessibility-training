@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Accessible vScreen Disabled Example</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .u-visually-hidden {
+                position: absolute;
+                left: -100%;
+            }
+        </style>
+    </head>
+    <body>
+            <main>
+                <p>Is your Company and/or Guarantor(s) related or connected to any member of the HSBC Group (including Hang
+                    Seng Bank Limited (“Hang Seng”) and its subsidiaries) as described in (B) above?</p>
+                <form>
+                    <div>
+                        <input type="checkbox" id="choice-no" value="no" name="choice" />
+                        <label for="choice-no">No. I hereby confirm that, as at the date of application, I am not related or
+                            connected to
+                            the HSBC Group as described in (B) and I agree to notify Hang Seng promptly in writing if any
+                            such relationship arise in the future.</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="choice-yes" value="yes" name="choice" class="js-triggerInput" />
+                        <label for="choice-yes">Yes. Please provide the details of the relevant related or connected
+                            person.</label>
+                    </div>
+                    <div class="js-inputArea">
+                            <p class="js-alert u-visually-hidden" aria-live="assertive"></p>
+                        <div>
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" disabled aria-disabled="true">
+                        </div>
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email" disabled aria-disabled="true">
+                        </div>
+                        <div>
+                            <label for="telephone">Telephone</label>
+                            <input type="text" name="telephone" id="telephone" disabled aria-disabled="true">
+                        </div>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </main>
+        </body>
+    <script>
+        var triggerInput = document.querySelector(".js-triggerInput");
+        var hiddenAlert = document.querySelector(".js-alert");
+        var inputs = document.querySelectorAll("input[type='text']");
+
+        triggerInput.addEventListener("click", removeDisabled);
+
+        function removeDisabled() {
+            inputs.forEach(function (input) {
+                input.disabled = false;
+                input.setAttribute("aria-disabled", false);
+                hiddenAlert.textContent = "Input fields now enabled.";
+            });
+        }
+    </script>
+
+</html>
