@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Typical vScreen Screen Reader Example</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .u-hidden {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <p>Is your Company and/or Guarantor(s) related or connected to any member of the HSBC Group (including Hang
+                Seng Bank Limited (“Hang Seng”) and its subsidiaries) as described in (B) above?</p>
+            <form>
+                <div>
+                    <input type="checkbox" id="choice-no" value="no" name="choice" />
+                    <label for="choice-no">No. I hereby confirm that, as at the date of application, I am not related or
+                        connected to
+                        the HSBC Group as described in (B) and I agree to notify Hang Seng promptly in writing if any
+                        such relationship arise in the future.</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="choice-yes" value="yes" name="choice" class="js-triggerInput" />
+                    <label for="choice-yes">Yes. Please provide the details of the relevant related or connected
+                        person.</label>
+                </div>
+                <div class="js-inputArea u-hidden">
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email">
+                    </div>
+                    <div>
+                        <label for="telephone">Telephone</label>
+                        <input type="text" name="telephone" id="telephone">
+                    </div>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </main>
+    </body>
+    <script>
+        var triggerInput = document.querySelector(".js-triggerInput");
+        var inputArea = document.querySelector(".js-inputArea");
+
+        triggerInput.addEventListener("click", toggleInputs);
+
+        function toggleInputs() {
+            var inputClasses = inputArea.classList;
+
+            if (inputClasses.contains("u-hidden")) {
+                inputClasses.remove("u-hidden");
+            } else {
+                inputClasses.add("u-hidden");
+            }
+        }
+    </script>
+</html>
